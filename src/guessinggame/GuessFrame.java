@@ -99,15 +99,17 @@ public class GuessFrame extends javax.swing.JFrame {
     private void btnsubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsubmitActionPerformed
         int guess;
         guess = Integer.parseInt(txtguess.getText());
-        if (machine.getGuess(guess)) {
+        if (machine.setGuess(guess)) {
             lblresult.setText(machine.giveHint());
-            lblattempts.setText(machine.getnumguesses());
+            lblattempts.setText("" + machine.getNumGuesses());
         } else {
             lblresult.setText("Invalid Guess");
+            return;
         }
-        if (machine.giveHint().equals("You got it!"));
-        btnsubmit.setEnabled(false);
-        
+        if (machine.giveHint().equals("You got it!")) {
+            btnsubmit.setEnabled(false);
+        }
+
         lblresult.setText(machine.giveHint());
     }//GEN-LAST:event_btnsubmitActionPerformed
 
